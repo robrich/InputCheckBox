@@ -1,0 +1,34 @@
+﻿@model ThreeModel
+
+@{
+	ViewBag.Title = "Edit the thing";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form action="/Three" method="POST">
+
+	<label for="Name">Name</label>
+	<input type="text" id="Name" name="Name" value="@Model.Name"/>
+	<br/>
+
+	<input type="checkbox" name="Active" id="Active" checked="@Model.Active" value="true"/>
+	<input type="hidden" name="Active" id="ActiveHidden" value="@Model.Active.ToString().ToLowerInvariant()"/>
+	<label for="Active">Active</label>
+	<br/>
+
+	<input type="submit" value="Save"/>
+</form>
+
+@section scripts {
+	<script>
+		// Compensate for that constructor by adding a duplicate hidden field and javascript that keeps them in sync
+		$(document).ready(function () {
+			$('#Active').change(function () {
+				var val = $(this).is(':checked');
+				$('#ActiveHidden').val(val ? 'true' : 'false');
+				console.log('changed active to ' + val);
+			});
+		});
+	</script>
+}

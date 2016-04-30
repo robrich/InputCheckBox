@@ -1,0 +1,20 @@
+﻿@model FourModel
+
+@{
+	ViewBag.Title = "Edit the thing";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form action="/Four" method="POST">
+
+	<label for="Name">Name</label>
+	<input type="text" id="Name" name="Name" value="@Model.Name"/>
+	<br/>
+
+	<input type="checkbox" id="Active" name="Active" checked="@Model.Active" value="true"/>
+	<label for="Active">Active</label>
+	<br/>
+
+	<input type="submit" value="Save"/>
+</form>
